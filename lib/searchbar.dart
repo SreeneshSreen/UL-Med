@@ -55,51 +55,79 @@ class _BlinkingHintTextSearchBarState extends State<BlinkingHintTextSearchBar>
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.3),
-              blurRadius: 8,
-              offset: const Offset(0, 4),
-            ),
-          ],
-          borderRadius: BorderRadius.circular(30),
-        ),
-        child: Stack(
-          alignment: Alignment.centerLeft,
-          children: [
-            TextField(
-              style: const TextStyle(fontSize: 14),
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: Colors.white,
-                prefixIcon: const Icon(Icons.search),
-                hintText: "", // handled manually
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30),
-                  borderSide: BorderSide.none,
-                ),
-                contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 12,
-                ),
+    return Row(
+      children: [
+        // Search bar
+        Expanded(
+          child: Container(
+            height: 42,
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.grey.shade400, // stroke color
+                width: 1, // stroke thickness
               ),
+              boxShadow: [
+                // BoxShadow(
+                //   color: Colors.grey.withOpacity(0.3),
+                //   blurRadius: 8,
+                //   offset: const Offset(0, 4),
+                // ),
+              ],
+              borderRadius: BorderRadius.circular(10),
             ),
-            Positioned(
-              left: 50,
-              child: FadeTransition(
-                opacity: _opacityAnimation,
-                child: Text(
-                  _hints[_currentHintIndex],
-                  style: const TextStyle(color: Colors.grey, fontSize: 14),
+            child: Stack(
+              alignment: Alignment.centerLeft,
+              children: [
+                TextField(
+                  style: const TextStyle(fontSize: 14),
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                    prefixIcon: const Icon(Icons.search),
+                    hintText: "",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                      borderSide: BorderSide.none,
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 12,
+                    ),
+                  ),
                 ),
-              ),
+                Positioned(
+                  left: 50,
+                  child: FadeTransition(
+                    opacity: _opacityAnimation,
+                    child: Text(
+                      _hints[_currentHintIndex],
+                      style: const TextStyle(color: Colors.grey, fontSize: 14),
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
-      ),
+
+        const SizedBox(width: 10),
+
+        // Cart icon
+        IconButton(
+          icon: const Icon(Icons.shopping_cart_outlined),
+          onPressed: () {
+            // TODO: Navigate to cart page
+          },
+        ),
+
+        // Sort icon
+        IconButton(
+          icon: const Icon(Icons.sort),
+          onPressed: () {
+            // TODO: Open sort/filter options
+          },
+        ),
+      ],
     );
   }
 }

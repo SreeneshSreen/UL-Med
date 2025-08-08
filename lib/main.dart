@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ulmed/categories.dart';
 import 'package:ulmed/customappbar.dart';
-import 'package:ulmed/searchbar.dart'; // make sure path is correct
-import 'package:ulmed/imagescroll.dart'; // Update this path if needed
+import 'package:ulmed/searchbar.dart';
+import 'package:ulmed/imagescroll.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,7 +22,6 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
-
   final String title;
 
   @override
@@ -33,29 +32,68 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.amberAccent,
-      // ✅ Use custom AppBar directly
+      backgroundColor: Colors.white,
       appBar: const CustomAppBar(),
 
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            Row(children: const [Expanded(child: BlinkingHintTextSearchBar())]),
-            SizedBox(height: 20),
-            // CategoriesRow(),
-            const SizedBox(
-              height: 70, // or whatever fits your images
-              child: CategoriesRow(),
+      body: Column(
+        children: [
+          // 🔹 Fixed search bar
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Row(
+              children: const [Expanded(child: BlinkingHintTextSearchBar())],
             ),
+          ),
 
-            // SizedBox(height: 1),
-            const SizedBox(
-              height: 160, // or whatever fits your images
-              child: ImageScroll(),
+          // 🔹 Scrollable content
+          Expanded(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Column(
+                children: [
+                  const SizedBox(height: 160, child: ImageScroll()),
+                  const SizedBox(height: 20),
+                  Row(
+                    children: const [
+                      Icon(
+                        Icons.category,
+                        size: 20,
+                        color: Color.fromARGB(255, 216, 18, 110),
+                      ),
+                      SizedBox(width: 5),
+                      Text("Categories"),
+                    ],
+                  ),
+                  CategoriesGrid(),
+                  const SizedBox(height: 8),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.thumb_up,
+                            size: 20,
+                            color: Color.fromARGB(255, 216, 18, 110),
+                          ),
+                          SizedBox(width: 5),
+                          Text("Recommended"),
+                        ],
+                      ),
+                      Text(
+                        "See more",
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 216, 18, 110),
+                        ),
+                      ),
+                    ],
+                  ),
+                  // RecommendedGrid(),
+                ],
+              ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
