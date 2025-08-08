@@ -25,7 +25,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             child: Row(
               children: [
                 const Text(
-                  'Urban Looms',
+                  'Urban Looms..',
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
                     fontSize: 20,
@@ -44,11 +44,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   icon: const Icon(Icons.person, color: Colors.white),
                   tooltip: 'Profile',
                 ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.notifications, color: Colors.white),
-                  tooltip: 'Notifications',
-                ),
+                // IconButton(
+                //   onPressed: () {},
+                //   icon: const Icon(Icons.notifications, color: Colors.white),
+                //   tooltip: 'Notifications',
+                // ),
               ],
             ),
           ),

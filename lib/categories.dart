@@ -13,7 +13,7 @@ class CategoriesGrid extends StatelessWidget {
       {'icon': Icons.shopping_bag, 'label': 'Accessories'},
       {'icon': Icons.eco, 'label': 'Eco Living'},
       {'icon': Icons.spa, 'label': 'Wellness'},
-      {'icon': Icons.chair, 'label': 'Furniture'},
+      {'icon': Icons.more_horiz_outlined, 'label': 'More'},
     ];
 
     return Container(
@@ -68,7 +68,7 @@ class CategoriesGrid extends StatelessWidget {
                     backgroundColor: const Color.fromARGB(255, 255, 255, 255),
                     child: Icon(
                       category['icon'],
-                      size: 22,
+                      size: 30,
                       color: const Color.fromARGB(255, 0, 0, 0),
                     ),
                   ),
